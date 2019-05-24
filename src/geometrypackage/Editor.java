@@ -1,8 +1,10 @@
+package drawingcomponentpkg;
+
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package geometrypackage;
 
 import java.util.ArrayList;
@@ -12,69 +14,69 @@ import java.util.ArrayList;
  * @author admin
  */
 public class Editor {
-    
-    /**
-     * ArrayList of MainClass
+
+	/**
+	 * ArrayList of MainClass
  This MainClass object can grow when a new point is created and shrink
  when a point is deleted.
-     */
-    public ArrayList<MainClass> drawPoint = new ArrayList<>();
-    
-    /**
-     * ArrayList of LineFeature
-     * This LineFeature object can grow when a new Line is created and shrink
-     * when a Line is deleted.
-     */
-    public ArrayList<LineFeature> drawLine = new ArrayList<>();
-    /**
-     * ArrayList of LineFeature
-     * This LineFeature object can grow when a new Line is created and shrink
-     * when a Line is deleted.
-     */
-    public ArrayList<MainClass> drawRectangle = new ArrayList<>();
-    /**
-     * ArrayList of RectangleFeature
-     * This RectangleFeature object can grow when a new Rectangle is created and shrink
-     * when a Rectangle is deleted.
-     */
-    public ArrayList<MainClass> drawTriangle = new ArrayList<>();
-    
-    /*..............................................................
+	 */
+	public ArrayList<MainClass> drawPoint = new ArrayList<>();
+
+	/**
+	 * ArrayList of LineFeature
+	 * This LineFeature object can grow when a new Line is created and shrink
+	 * when a Line is deleted.
+	 */
+	public ArrayList<LineFeature> drawLine = new ArrayList<>();
+	/**
+	 * ArrayList of LineFeature
+	 * This LineFeature object can grow when a new Line is created and shrink
+	 * when a Line is deleted.
+	 */
+	public ArrayList<MainClass> drawRectangle = new ArrayList<>();
+	/**
+	 * ArrayList of RectangleFeature
+	 * This RectangleFeature object can grow when a new Rectangle is created and shrink
+	 * when a Rectangle is deleted.
+	 */
+	public ArrayList<MainClass> drawTriangle = new ArrayList<>();
+
+	/*..............................................................
     ................Selection.....................................
-    */
-    /**
-     * ArrayList of MainClass
+	 */
+	/**
+	 * ArrayList of MainClass
  This Points are currently selected.
-     */
-    public ArrayList<MainClass> selectedPoint = new ArrayList<>();
-    
-    /**
-     * ArrayList of LineFeature
-     * This Lines are currently selected.
-     */
-    public ArrayList<LineFeature> selectedLines = new ArrayList<>();
-    /**
-     * ArrayList of RectangleFeature
-     * This Rectangles are are currently selected.
-     */
-    public ArrayList<RectangleFeature> selectedRectangles = new ArrayList<>();
-    /**
-     * ArrayList of TriangleFeature
-     * This Triangle are currently selected.
-     */
-    public ArrayList<TriangleFeature> selectedTriangles = new ArrayList<>();
-    
-    /*....................................................................
+	 */
+	public ArrayList<MainClass> selectedPoint = new ArrayList<>();
+
+	/**
+	 * ArrayList of LineFeature
+	 * This Lines are currently selected.
+	 */
+	public ArrayList<LineFeature> selectedLines = new ArrayList<>();
+	/**
+	 * ArrayList of RectangleFeature
+	 * This Rectangles are are currently selected.
+	 */
+	public ArrayList<RectangleFeature> selectedRectangles = new ArrayList<>();
+	/**
+	 * ArrayList of TriangleFeature
+	 * This Triangle are currently selected.
+	 */
+	public ArrayList<TriangleFeature> selectedTriangles = new ArrayList<>();
+
+	/*....................................................................
     .......Deletion.......................................................
-    */
-    
+	 */
+
 }/**
  * Adds a ToolPoint at the end of the corresponding ArrayList.
  * @author heol1015
  * @param toolPoint Type of Geometry
  */
 public void addPoint(PointFeature point) {
-drawPoint.add(point);
+	drawPoint.add(point);
 }
 /**
  * Adds a ToolLine at the end of the corresponding ArrayList.
@@ -82,7 +84,7 @@ drawPoint.add(point);
  * @param toolline Type of Geometry
  */
 public void addLineElements(LineFeature line) {
-drawLines.add(line);
+	drawLines.add(line);
 }
 /**
  * Adds a ToolLine at the end of the corresponding ArrayList.
@@ -90,7 +92,7 @@ drawLines.add(line);
  * @param toolline Type of Geometry
  */
 public void storeLineElements(ToolLine toolline) {
-managedToolLines.add(toolline);
+	drawLine.add(toolline);
 }
 
 /**
@@ -99,7 +101,7 @@ managedToolLines.add(toolline);
  * @param tooltriangle Type of Geometry
  */
 public void storeTriangleElements(ToolTriangle tooltriangle) {
-managedToolTriangles.add(tooltriangle);
+	drawtriangle.add(tooltriangle);
 }
 
 /**
@@ -108,7 +110,7 @@ managedToolTriangles.add(tooltriangle);
  * @param toolrectangle Type of Geometry
  */
 public void storeRectangleElements(ToolRectangle toolrectangle) {
-managedToolRectangles.add(toolrectangle);
+	managedToolRectangles.add(toolrectangle);
 }
 
 /**
@@ -116,10 +118,10 @@ managedToolRectangles.add(toolrectangle);
  * @author heol1015
  */
 public void clearCurrentSelection() {
-selectedPoints = new ArrayList<>();
-selectedLines = new ArrayList<>();
-selectedTriangles = new ArrayList<>();
-selectedRectangles = new ArrayList<>();
+	selectedPoints = new ArrayList<>();
+	selectedLines = new ArrayList<>();
+	selectedTriangles = new ArrayList<>();
+	selectedRectangles = new ArrayList<>();
 }
 
 /**
@@ -131,45 +133,45 @@ selectedRectangles = new ArrayList<>();
  * @param selection_rectangle Selection rectangle defined by the user
  */
 public void selectAffectedToolObjects(Rectangle2D selection_rectangle) {
-managedToolPoints.forEach((ToolPoint point) -> {
-Ellipse2D point_object 		= point.createToolPoint();
-Rectangle2D queryArea		= point_object.getBounds2D();
+	managedToolPoints.forEach((ToolPoint point) -> {
+		Ellipse2D point_object 		= point.createToolPoint();
+		Rectangle2D queryArea		= point_object.getBounds2D();
 
-//if selection_rectangle contains the object then add this object so the selectedToolPoints
-if (selection_rectangle.contains(queryArea) == true) {
-selectedToolPoints.add(point);
-}
-});
+		//if selection_rectangle contains the object then add this object so the selectedToolPoints
+		if (selection_rectangle.contains(queryArea) == true) {
+			selectedToolPoints.add(point);
+		}
+	});
 
-managedToolLines.forEach((ToolLine line) -> {
-Line2D line_object 			= line.createToolLine();
-Rectangle2D queryArea		= line_object.getBounds2D();
+	drawLine.forEach((ToolLine line) -> {
+		Line2D line_object 			= line.createToolLine();
+		Rectangle2D queryArea		= line_object.getBounds2D();
 
-//if selection_rectangle contains the object then add this object so the selectedToolLines
-if ( selection_rectangle.contains(queryArea) == true) {
-selectedToolLines.add(line);
-}
-});
+		//if selection_rectangle contains the object then add this object so the selectedToolLines
+		if ( selection_rectangle.contains(queryArea) == true) {
+			selectedToolLines.add(line);
+		}
+	});
 
-managedToolTriangles.forEach((ToolTriangle triangle) -> {
-Path2D triangle_object 		= triangle.createToolTriangle();
-Rectangle2D queryArea		= triangle_object.getBounds2D();
+	drawtriangle.forEach((ToolTriangle triangle) -> {
+		Path2D triangle_object 		= triangle.createToolTriangle();
+		Rectangle2D queryArea		= triangle_object.getBounds2D();
 
-//if selection_rectangle contains the object then add this object so the selectedToolTriangles
-if (selection_rectangle.contains(queryArea) == true) {
-selectedToolTriangles.add(triangle);
-}
-});
+		//if selection_rectangle contains the object then add this object so the selectedToolTriangles
+		if (selection_rectangle.contains(queryArea) == true) {
+			selectedToolTriangles.add(triangle);
+		}
+	});
 
-managedToolRectangles.forEach((ToolRectangle rectangle) -> {
-Rectangle2D rectangle_object 			= rectangle.createToolRectangle();
-Rectangle2D queryArea		= rectangle_object.getBounds2D();
+	managedToolRectangles.forEach((ToolRectangle rectangle) -> {
+		Rectangle2D rectangle_object 			= rectangle.createToolRectangle();
+		Rectangle2D queryArea		= rectangle_object.getBounds2D();
 
-//if selection_rectangle contains the object then add this object so the selectedToolRectangles
-if ( selection_rectangle.contains(queryArea) == true) {
-selectedToolRectangles.add(rectangle);
-}
-});
+		//if selection_rectangle contains the object then add this object so the selectedToolRectangles
+		if ( selection_rectangle.contains(queryArea) == true) {
+			selectedToolRectangles.add(rectangle);
+		}
+	});
 }
 
 /**
@@ -179,25 +181,25 @@ selectedToolRectangles.add(rectangle);
  * @author heol1015
  */
 public void deleteAffectedToolObjects() {
-selectedToolPoints.forEach((ToolPoint point) -> {
-int identifier = point.getIdentifier();
-deletePoint(identifier);
-});
+	selectedToolPoints.forEach((ToolPoint point) -> {
+		int identifier = point.getIdentifier();
+		deletePoint(identifier);
+	});
 
-selectedToolLines.forEach((ToolLine line) -> {
-int identifier = line.getIdentifier();
-deleteLine(identifier);
-});
+	selectedToolLines.forEach((ToolLine line) -> {
+		int identifier = line.getIdentifier();
+		deleteLine(identifier);
+	});
 
-selectedToolTriangles.forEach((ToolTriangle triangle) -> {
-int identifier = triangle.getIdentifier();
-deleteTriangle(identifier);
-});
+	selectedToolTriangles.forEach((ToolTriangle triangle) -> {
+		int identifier = triangle.getIdentifier();
+		deleteTriangle(identifier);
+	});
 
-selectedToolRectangles.forEach((ToolRectangle rectangle) -> {
-int identifier = rectangle.getIdentifier();
-deleteRectangle(identifier);
-});
+	selectedToolRectangles.forEach((ToolRectangle rectangle) -> {
+		int identifier = rectangle.getIdentifier();
+		deleteRectangle(identifier);
+	});
 }
 
 /**
@@ -207,15 +209,15 @@ deleteRectangle(identifier);
  * @param identifier Identifies the point that should be deleted
  */
 private void deletePoint(int identifier) {
-//loop through every point of managedToolPoints
-for ( int i=0; i<managedToolPoints.size(); i++) {
-ToolPoint point = managedToolPoints.get(i);
-int pointIdentifier = point.getIdentifier();
-//if identifier from selectedToolPoints and from managedToolPoints match then delete this point
-if (pointIdentifier == identifier) {
-managedToolPoints.remove(i);
-}
-}
+	//loop through every point of managedToolPoints
+	for ( int i=0; i<managedToolPoints.size(); i++) {
+		ToolPoint point = managedToolPoints.get(i);
+		int pointIdentifier = point.getIdentifier();
+		//if identifier from selectedToolPoints and from managedToolPoints match then delete this point
+		if (pointIdentifier == identifier) {
+			managedToolPoints.remove(i);
+		}
+	}
 }
 
 /**
@@ -225,15 +227,15 @@ managedToolPoints.remove(i);
  * @param identifier Identifies the line that should be deleted
  */
 private void deleteLine(int identifier) {
-//loop through every line of managedToolLines
-for ( int i=0; i<managedToolLines.size(); i++) {
-ToolLine line = managedToolLines.get(i);
-int lineIdentifier = line.getIdentifier();
-//if identifier from selectedToolLines and from managedToolLines match then delete this line
-if (lineIdentifier == identifier) {
-managedToolLines.remove(i);
-}
-}
+	//loop through every line of drawLine
+	for ( int i=0; i<drawLine.size(); i++) {
+		ToolLine line = drawLine.get(i);
+		int lineIdentifier = line.getIdentifier();
+		//if identifier from selectedToolLines and from drawLine match then delete this line
+		if (lineIdentifier == identifier) {
+			drawLine.remove(i);
+		}
+	}
 }
 
 /**
@@ -243,15 +245,15 @@ managedToolLines.remove(i);
  * @param identifier Identifies the triangle that should be deleted
  */
 private void deleteTriangle(int identifier) {
-//loop through every triangle of managedToolTriangles
-for ( int i=0; i<managedToolTriangles.size(); i++) {
-ToolTriangle triangle = managedToolTriangles.get(i);
-int triangleIdentifier = triangle.getIdentifier();
-//if identifier from selectedToolTriangles and from managedToolTriangles match then delete this triangle
-if (triangleIdentifier == identifier) {
-managedToolTriangles.remove(i);
-}
-}
+	//loop through every triangle of drawtriangle
+	for ( int i=0; i<drawtriangle.size(); i++) {
+		ToolTriangle triangle = drawtriangle.get(i);
+		int triangleIdentifier = triangle.getIdentifier();
+		//if identifier from selectedToolTriangles and from drawtriangle match then delete this triangle
+		if (triangleIdentifier == identifier) {
+			drawtriangle.remove(i);
+		}
+	}
 }
 
 /**
@@ -261,14 +263,15 @@ managedToolTriangles.remove(i);
  * @param identifier Identifies the rectangle that should be deleted
  */
 private void deleteRectangle(int identifier) {
-//loop through every rectangle of managedToolRectangles
-for ( int i=0; i<managedToolRectangles.size(); i++) {
-ToolRectangle rectangle = managedToolRectangles.get(i);
-int triangleIdentifier = rectangle.getIdentifier();
-//if identifier from selectedToolRectangle and from managedToolRectangles match then delete this rectangle
-if (triangleIdentifier == identifier) {
-managedToolRectangles.remove(i);
+	//loop through every rectangle of managedToolRectangles
+	for ( int i=0; i<managedToolRectangles.size(); i++) {
+		ToolRectangle rectangle = managedToolRectangles.get(i);
+		int triangleIdentifier = rectangle.getIdentifier();
+		//if identifier from selectedToolRectangle and from managedToolRectangles match then delete this rectangle
+		if (triangleIdentifier == identifier) {
+			managedToolRectangles.remove(i);
+		}
+	}
 }
-}
-}
+
 

@@ -1,9 +1,10 @@
+package geometrypackage;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geometrypackage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class ShapesParent {
 	/**
 	 * A unique ID of geometry objects
 	 */
-	public int ShapesId = setShapesId(ToolFrame.frame.editor);
+	public int ShapesId = setShapesId(MainClass.frame.editor);
 	
 	/**
 	 * The type of geometry
@@ -101,3 +102,4 @@ public class ShapesParent {
 	}
 
 }
+
