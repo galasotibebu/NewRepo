@@ -1,4 +1,3 @@
-package drawingcomponentpkg;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +19,7 @@ public class Editor {
  This MainClass object can grow when a new point is created and shrink
  when a point is deleted.
 	 */
-	public ArrayList<MainClass> drawPoint = new ArrayList<>();
+	public ArrayList<PointFeature> drawPoint = new ArrayList<>();
 
 	/**
 	 * ArrayList of LineFeature
@@ -33,13 +32,13 @@ public class Editor {
 	 * This LineFeature object can grow when a new Line is created and shrink
 	 * when a Line is deleted.
 	 */
-	public ArrayList<MainClass> drawRectangle = new ArrayList<>();
+	public ArrayList<RectangleFeature> drawRectangle = new ArrayList<>();
 	/**
 	 * ArrayList of RectangleFeature
 	 * This RectangleFeature object can grow when a new Rectangle is created and shrink
 	 * when a Rectangle is deleted.
 	 */
-	public ArrayList<MainClass> drawTriangle = new ArrayList<>();
+	public ArrayList<TriangleFeature> drawTriangle = new ArrayList<>();
 
 	/*..............................................................
     ................Selection.....................................
@@ -48,7 +47,7 @@ public class Editor {
 	 * ArrayList of MainClass
  This Points are currently selected.
 	 */
-	public ArrayList<MainClass> selectedPoint = new ArrayList<>();
+	public ArrayList<PointFeature> selectedPoints = new ArrayList<>();
 
 	/**
 	 * ArrayList of LineFeature
@@ -70,9 +69,9 @@ public class Editor {
     .......Deletion.......................................................
 	 */
 
-}/**
+/**
  * Adds a ToolPoint at the end of the corresponding ArrayList.
- * @author heol1015
+ * @author 
  * @param toolPoint Type of Geometry
  */
 public void addPoint(PointFeature point) {
@@ -80,42 +79,42 @@ public void addPoint(PointFeature point) {
 }
 /**
  * Adds a ToolLine at the end of the corresponding ArrayList.
- * @author heol1015
+ * @author 
  * @param toolline Type of Geometry
  */
 public void addLineElements(LineFeature line) {
-	drawLines.add(line);
+	drawLine.add(line);
 }
 /**
  * Adds a ToolLine at the end of the corresponding ArrayList.
- * @author heol1015
+ * @author 
  * @param toolline Type of Geometry
  */
-public void storeLineElements(ToolLine toolline) {
+public void storeLineElements(LineFeature toolline) {
 	drawLine.add(toolline);
 }
 
 /**
  * Adds a ToolTriangle at the end of the corresponding ArrayList.
- * @author heol1015
+ * @author 
  * @param tooltriangle Type of Geometry
  */
-public void storeTriangleElements(ToolTriangle tooltriangle) {
-	drawtriangle.add(tooltriangle);
+public void storeTriangleElements(TriangleFeature tooltriangle) {
+	drawTriangle.add(tooltriangle);
 }
 
 /**
  * Adds a ToolRectangle at the end of the corresponding ArrayList.
- * @author heol1015
+ * @author 
  * @param toolrectangle Type of Geometry
  */
-public void storeRectangleElements(ToolRectangle toolrectangle) {
-	managedToolRectangles.add(toolrectangle);
+public void storeRectangleElements(RectangleFeature rectangle) {
+	drawRectangle.add(rectangle);
 }
 
 /**
  * Clears the ArrayLists that contain the objects that are added by the selection rectangle
- * @author heol1015
+ * @author 
  */
 public void clearCurrentSelection() {
 	selectedPoints = new ArrayList<>();
@@ -129,12 +128,12 @@ public void clearCurrentSelection() {
  * inside the selection rectangle or outside.
  * If the objects lies inside the selection rectangle it will be added to the ArrayList of selected objects.
  * The function contains() is provided by Java.
- * @author heol1015
+ * @author 
  * @param selection_rectangle Selection rectangle defined by the user
  */
 public void selectAffectedToolObjects(Rectangle2D selection_rectangle) {
-	managedToolPoints.forEach((ToolPoint point) -> {
-		Ellipse2D point_object 		= point.createToolPoint();
+	PointFeature.forEach((PointFeature point) -> {
+		Ellipse2D point_object 		= point.drawPoint();
 		Rectangle2D queryArea		= point_object.getBounds2D();
 
 		//if selection_rectangle contains the object then add this object so the selectedToolPoints
@@ -178,7 +177,7 @@ public void selectAffectedToolObjects(Rectangle2D selection_rectangle) {
  * Iterates through every object of every type of geometry in the ArrayList of the selected objects
  * and requests the id of the objects. After that it iterates through the ArrayLists of objects that
  * are currently displayed and deletes objects with the same id as the object in the ArrayLists of selected objects.
- * @author heol1015
+ * @author 
  */
 public void deleteAffectedToolObjects() {
 	selectedToolPoints.forEach((ToolPoint point) -> {
@@ -205,7 +204,7 @@ public void deleteAffectedToolObjects() {
 /**
  * Iterates through every drawn ToolPoint in the corresponding ArrayList and deletes the object with the
  * same id as the provided id in the parameter.
- * @author heol1015
+ * @author 
  * @param identifier Identifies the point that should be deleted
  */
 private void deletePoint(int identifier) {
@@ -223,7 +222,7 @@ private void deletePoint(int identifier) {
 /**
  * Iterates through every drawn ToolLine in the corresponding ArrayList and deletes the object with the
  * same id as the provided id in the parameter.
- * @author heol1015
+ * @author 
  * @param identifier Identifies the line that should be deleted
  */
 private void deleteLine(int identifier) {
@@ -241,7 +240,7 @@ private void deleteLine(int identifier) {
 /**
  * Iterates through every drawn ToolTriangle in the corresponding ArrayList and deletes the object with the
  * same id as the provided id in the parameter.
- * @author heol1015
+ * @author 
  * @param identifier Identifies the triangle that should be deleted
  */
 private void deleteTriangle(int identifier) {
@@ -259,7 +258,7 @@ private void deleteTriangle(int identifier) {
 /**
  * Iterates through every drawn ToolRectangle in the corresponding ArrayList and deletes the object with the
  * same id as the provided id in the parameter.
- * @author heol1015
+ * @author 
  * @param identifier Identifies the rectangle that should be deleted
  */
 private void deleteRectangle(int identifier) {

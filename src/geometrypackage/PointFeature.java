@@ -6,7 +6,7 @@ import java.awt.geom.Ellipse2D;
  * Class for ToolPoints that stores point coordinates and provides methods for creating drawable point geometries for the ToolDrawPanel,
  * or for importing/exporting the point coordinates.
  * Inherits from ObjectFundamenals. 
- * @author heol1015
+ * @author 
  */
 public class PointFeature extends ShapesParent {
 	/**
@@ -17,8 +17,8 @@ public class PointFeature extends ShapesParent {
 	
 	/**
 	 * The constructor defines the type of geometry
-	 * (see: constructor of ObjectFundamentals)
-	 * @author heol1015
+	 * (see: constructor of ShapeParent)
+	 * @author 
 	 */
 	public PointFeature() {		
 		super("Point");
@@ -26,7 +26,7 @@ public class PointFeature extends ShapesParent {
 	
 	/**
 	 * Creates a drawable Ellipse2D object with the points of the ToolPoint object
-	 * @author heol1015
+	 * @author 
 	 * @return Drawable point geometry
 	 */
 	public Ellipse2D createPointFeature() {
@@ -36,7 +36,7 @@ public class PointFeature extends ShapesParent {
 	
 	/**
 	 * Setter for x- and y-coordinate of every ToolPoint
-	 * @author heol1015
+	 * @author 
 	 * @param x Sets x-coordinate
 	 * @param y Sets y-coordinate
 	 * @return 	Whether the coordinates were set successfully
@@ -49,7 +49,7 @@ public class PointFeature extends ShapesParent {
 	
 	/**
 	 * Returns the coordinates of the ToolPoint object as a String
-	 * @author heol1015
+	 * @author 
 	 * @return String of coordinates
 	 */
 	public String getGeometryAsText() {
@@ -59,7 +59,7 @@ public class PointFeature extends ShapesParent {
 	
 	/**
 	 * Sets the coordinates from a String (provided by database or '.csv').
-	 * @author heol1015
+	 * @author 
 	 * @param csvGeometry String containing the point coordinate
 	 * @return 	Whether the operation was successfully operated or not
 	 */

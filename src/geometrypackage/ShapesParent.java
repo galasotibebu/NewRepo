@@ -16,7 +16,7 @@ import java.util.Collections;
  */
 public class ShapesParent {	
 	/**
-	 * A unique ID of geometry objects
+	 * A unique ID of geometry objects // while shapes are created in panel
 	 */
 	public int ShapesId = setShapesId(MainClass.frame.editor);
 	
@@ -29,7 +29,7 @@ public class ShapesParent {
 	/**
 	 * Constructor sets the type of the objects.
 	 * (see: Constructors of ToolLine, ToolTriangle, ToolRectangle)
-	 * @author heol1015
+	 * @author 
 	 * @param objectType String provided by the constructor of the geometrie objects when created
 	 */
 	public ShapesParent (String objectType) {
@@ -38,7 +38,7 @@ public class ShapesParent {
 	
 	/**
 	 * Returns the identifier of an object.
-	 * @author heol1015
+	 * @author 
 	 * @return Identifier of the object
 	 */
 	public int getShapesId() {
@@ -47,7 +47,7 @@ public class ShapesParent {
 	
 	/**
 	 * Returns the type of an object.
-	 * @author heol1015
+	 * @author 
 	 * @return Type of the object
 	 */
 	public String getObjectType() {
@@ -58,7 +58,7 @@ public class ShapesParent {
 	 * Iterates through objects of every type of geometry and adds every ShapesId
 	 * to the ShapeIdList, as long as the length of the ShapeIdList is > 0, the ShapeId that 
 	 * is returned is the length of the SapesIdList + 1
-	 * @author heol1015
+	 * @author 
 	 * @param editor
 	 * @return New unique identifier
 	 */
