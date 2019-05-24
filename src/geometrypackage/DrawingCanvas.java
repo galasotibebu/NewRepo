@@ -42,19 +42,19 @@ public class DrawingCanvas extends JPanel{
 	/**
 	 * ArrayList of PointFeature objects that are currently selected (will be drawn in another color for visual feedback)
 	 */
-	private ArrayList<PointFeature> pointList_selection = new ArrayList<>();
+	private ArrayList<PointFeature> selectedPointLists = new ArrayList<>();
 	/**
 	 * ArrayList of LineFeature objects that are currently selected (will be drawn in another color for visual feedback)
 	 */
-	private ArrayList<LineFeature> lineList_selection = new ArrayList<>();
+	private ArrayList<LineFeature> selectedLineLists = new ArrayList<>();
 	/**
 	 * ArrayList of TriangleFeature objects that are currently selected (will be drawn in another color for visual feedback)
 	 */
-	private ArrayList<TriangleFeature> triangleList_selection = new ArrayList<>();
+	private ArrayList<TriangleFeature> selectedTriangleLists = new ArrayList<>();
 	/**
 	 * ArrayList of RectangleFeature objects that are currently selected (will be drawn in another color for visual feedback)
 	 */
-	private ArrayList<RectangleFeature> rectangleList_selection = new ArrayList<>();
+	private ArrayList<RectangleFeature> selectedRectangleLists = new ArrayList<>();
 	
 	/*
 	 * [Added in the course of the Module Integration Test]
@@ -95,10 +95,10 @@ public class DrawingCanvas extends JPanel{
 		TriangleLists = editor.drawingTriangles;
 		RectangleLists = editor.drawingRectangles;	
 		//Selection Objects
-		pointList_selection = editor.selectedPoints;
-		lineList_selection = editor.selectedLines;
-		triangleList_selection = editor.selectedTriangles;
-		rectangleList_selection = editor.selectedRectangles;
+		selectedPointLists = editor.selectedPoints;
+		selectedLineLists = editor.selectedLines;
+		selectedTriangleLists = editor.selectedTriangles;
+		selectedRectangleLists = editor.selectedRectangles;
 	}	
 	
 	/**
@@ -134,6 +134,7 @@ public class DrawingCanvas extends JPanel{
 	/**
 	 * Clears all ArrayLists for live-displaying objects when drawn.
 	 * [Added in the course of the Module Integration Test]
+	 * it can also delete from dbCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 	 * @author 
 	 */
 	public void clearDrawingElements() {
@@ -193,22 +194,22 @@ public class DrawingCanvas extends JPanel{
 		}
 		
 		//Draw selected Objects in Red
-		pointList_selection.forEach((PointFeature point) -> {
+		selectedPointLists.forEach((PointFeature point) -> {
 			Ellipse2D ptS = point.createPointFeature();
 			g2d.fill(ptS);
 		});
 		
-		lineList_selection.forEach((LineFeature line) -> {
+		selectedLineLists.forEach((LineFeature line) -> {
 			Line2D lnS = line.drawLine();
 			g2d.draw(lnS);
 		});
 		
-		triangleList_selection.forEach((TriangleFeature triangle) -> {
+		selectedTriangleLists.forEach((TriangleFeature triangle) -> {
 			Path2D trS = triangle.createTriangleFeature();
 			g2d.draw(trS);
 		});
 		
-		rectangleList_selection.forEach((RectangleFeature rectangle) -> {
+		selectedRectangleLists.forEach((RectangleFeature rectangle) -> {
 			Rectangle2D rcS = rectangle.createRectangleFeature();
 			g2d.draw(rcS);
 		});
