@@ -221,7 +221,7 @@ public class MainClass extends JFrame implements ActionListener {
 					} else if ( rectangleInitiated == true) {
 						rectangle.addRectangleLastCorner(point);
 						editor.storeRectangleElements(rectangle);
-						//drawingcanvas.requestToolObjectLists(editor);
+						drawingcanvas.requestToolObjectLists(editor);
 						drawingcanvas.clearDrawingElements();
 						drawingcanvas.repaint();
 						rectangleInitiated = false;
@@ -647,7 +647,7 @@ public class MainClass extends JFrame implements ActionListener {
 											editor.drawingLines.get(i).lineElements[1].x = moveDestinationX;
 											editor.drawingLines.get(i).lineElements[1].y = moveDestinationY;
 
-											//drawingcanvas.requestToolObjectLists(editor);
+											drawingcanvas.requestToolObjectLists(editor);
 											drawingcanvas.clearDrawingElements();
 											drawingcanvas.repaint();
 											movingLine = false;
