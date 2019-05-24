@@ -24,7 +24,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
 /**
@@ -180,8 +179,8 @@ public class MainClass extends JFrame implements ActionListener {
 					} else if (lineInitiated == true) {
 						line.addLineEnd(point);
 						editor.storeLineElements(line);
-						drawingcanvas.requestToolObjectLists(editor);
-						drawingcanvas.clearDrawingElements();
+						((DrawingCanvas) drawingcanvas).requestToolObjectLists(editor);
+						((DrawingCanvas) drawingcanvas).clearDrawingElements();
 						drawingcanvas.repaint();
 						lineInitiated = false;
 						break;
@@ -204,7 +203,7 @@ public class MainClass extends JFrame implements ActionListener {
 						triangle.addTriangleEnd(point);
 						editor.storeTriangleElements(triangle);
 						//drawingcanvas.requestToolObjectLists(editor);
-						drawingcanvas.clearDrawingElements();
+						((DrawingCanvas) drawingcanvas).clearDrawingElements();
 						drawingcanvas.repaint();
 						triangleInitiated1 = false;
 						triangleInitiated2 = false;
@@ -221,8 +220,8 @@ public class MainClass extends JFrame implements ActionListener {
 					} else if ( rectangleInitiated == true) {
 						rectangle.addRectangleLastCorner(point);
 						editor.storeRectangleElements(rectangle);
-						drawingcanvas.requestToolObjectLists(editor);
-						drawingcanvas.clearDrawingElements();
+						((DrawingCanvas) drawingcanvas).requestToolObjectLists(editor);
+						((DrawingCanvas) drawingcanvas).clearDrawingElements();
 						drawingcanvas.repaint();
 						rectangleInitiated = false;
 						break;
@@ -269,7 +268,7 @@ public class MainClass extends JFrame implements ActionListener {
 						//drawingcanvas.defineSelectionRectangle(selectionRectangle);
 						drawingcanvas.repaint();
 
-						editor.selectAffectedToolObjects(selectionRectangle);
+						//editor.selectAffectedToolObjects(selectionRectangle);
 						//drawingcanvas.requestToolObjectLists(editor);
 						drawingcanvas.repaint();
 
@@ -442,7 +441,7 @@ public class MainClass extends JFrame implements ActionListener {
 									editor.drawingLines.get(i).lineElements[1].x = x2 - moveDifferenceX;
 									editor.drawingLines.get(i).lineElements[1].y = y2 - moveDifferenceY;
 									//drawingcanvas.requestToolObjectLists(editor);
-									drawingcanvas.clearDrawingElements();
+									((DrawingCanvas) drawingcanvas).clearDrawingElements();
 									drawingcanvas.repaint();
 									movingLine = false;
 									movementInitiated = false;
@@ -627,7 +626,7 @@ public class MainClass extends JFrame implements ActionListener {
 										editor.drawingLines.get(i).lineElements[0].y = moveDestinationY;
 
 										//drawingcanvas.requestToolObjectLists(editor);
-										drawingcanvas.clearDrawingElements();
+										((DrawingCanvas) drawingcanvas).clearDrawingElements();
 										drawingcanvas.repaint();
 										movingLine = false;
 										changeInitiated = false;
@@ -647,8 +646,8 @@ public class MainClass extends JFrame implements ActionListener {
 											editor.drawingLines.get(i).lineElements[1].x = moveDestinationX;
 											editor.drawingLines.get(i).lineElements[1].y = moveDestinationY;
 
-											drawingcanvas.requestToolObjectLists(editor);
-											drawingcanvas.clearDrawingElements();
+											((DrawingCanvas) drawingcanvas).requestToolObjectLists(editor);
+											((DrawingCanvas) drawingcanvas).clearDrawingElements();
 											drawingcanvas.repaint();
 											movingLine = false;
 											changeInitiated = false;
@@ -743,8 +742,7 @@ public class MainClass extends JFrame implements ActionListener {
 
 									}
 									//drawingcanvas.requestToolObjectLists(editor);
-									drawingcanvas
-									.repaint();
+									drawingcanvas.repaint();
 									movingRectangle = false;
 									changeInitiated = false;
 								}
@@ -761,8 +759,7 @@ public class MainClass extends JFrame implements ActionListener {
 			}
 		});
 
-		drawingcanvas
-		.addMouseMotionListener(new MouseAdapter() {
+		drawingcanvas.addMouseMotionListener(new MouseAdapter() {
 
 			//Live display when creating or editing displayed objects (for better user feedback only)
 			@Override
@@ -790,7 +787,7 @@ public class MainClass extends JFrame implements ActionListener {
 					 */
 
 					line.addLineEnd(point);
-					drawingcanvas.storeDrawingLineElements(line);
+					((DrawingCanvas) drawingcanvas).storeDrawingLineElements(line);
 					drawingcanvas.repaint();
 				}
 
@@ -838,7 +835,7 @@ public class MainClass extends JFrame implements ActionListener {
 					 */
 
 					triangle.addTriangleEnd(point);
-					drawingcanvas.storeDrawingTriangleElements(triangle);
+					((DrawingCanvas) drawingcanvas).storeDrawingTriangleElements(triangle);
 					drawingcanvas.repaint();
 
 				}
@@ -1264,7 +1261,7 @@ public class MainClass extends JFrame implements ActionListener {
 	 * @author 
 	 * @param neweditor
 	 */
-	public void overwriteObjects(editor neweditor) {
+	public void overwriteObjects(Editor neweditor) {
 		this.editor = neweditor;
 		//drawingcanvas.requestToolObjectLists(editor);
 		drawingcanvas.repaint();
@@ -1362,35 +1359,15 @@ public class MainClass extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Displays an OptionPane with advice about how to use this software.
-	 * @author 
-	 */
-	public void showUserGuideDialog() {
-
-		//Shows initial OptionPane
-		JOptionPane.showMessageDialog(frame,
-				"User guide:\n" +
-						"- Choose a drawing mode by clicking on the corresponding button in the toolbar.\n" +
-						"- Return to 'default mode' by clicking on the same button again. \n" +
-						"- You can connect this software to a Database.\n" +
-						"- You can import and export your result from/to '.csv'.\n" +
-						"\n" +
-						"- Works best with MySql© database\n" +
-						"- For bug reporting and proposals contact: 'oliver.hennhoefer@mail.de'",
-						"Intro Tutorial",
-						JOptionPane.PLAIN_MESSAGE);
-	}
-
-	/**
 	 * Initializes a new instance of MainClass.
 	 * Sets the defined layout and displays an OptionPane with advice on how to use this software.
 	 * @author 
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		frame = new MainClass();
 		frame.setLayout();
-		frame.showUserGuideDialog();
 	}
 
 	@Override
