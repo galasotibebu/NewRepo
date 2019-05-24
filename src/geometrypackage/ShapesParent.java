@@ -66,21 +66,21 @@ public class ShapesParent {
 		ArrayList<Integer> ShapesIdList = new ArrayList<Integer>();
 		int latestShapesId;
 		
-		editor.drawPoint.forEach((MainClass point) -> {
+		editor.drawPoint.forEach((PointFeature point) -> {
 			ShapesIdList.add(point.getShapesId());
 		});
 		editor.drawLine.forEach((LineFeature line) -> {
 			ShapesIdList.add(line.getShapesId());
 		});
-		/*editor.drawTriangle.forEach((TriangleFeature triangle) -> {
+		editor.drawTriangle.forEach((TriangleFeature triangle) -> {
 			ShapesIdList.add(triangle.getShapesId());
 		});
 		editor.drawRectangle.forEach((RectangleFeature rectangle) -> {
 			ShapesIdList.add(rectangle.getShapesId());
-		});*/
+		});
                 
                 
-		editor.selectedPoint.forEach((MainClass point) -> {
+		editor.selectedPoints.forEach((PointFeature point) -> {
 			ShapesIdList.add(point.getShapesId());
 		});
 		editor.selectedLines.forEach((LineFeature line) -> {

@@ -1,7 +1,6 @@
 package geometrypackage;
 
 import java.awt.geom.Ellipse2D;
-
 /**
  * Class for ToolPoints that stores point coordinates and provides methods for creating drawable point geometries for the ToolDrawPanel,
  * or for importing/exporting the point coordinates.

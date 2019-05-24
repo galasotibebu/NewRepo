@@ -152,7 +152,7 @@ public class MainClass extends JFrame implements ActionListener {
 		editor = new Editor();
 		//creates object of Tooldrawingpanel
 
-		drawingpanel = new MainClass();
+		drawingpanel = new DrawingCanvas();
 		drawingpanel.setBackground(Color.white);
 
 		drawingpanel.addMouseListener(new MouseAdapter() {
@@ -165,10 +165,9 @@ public class MainClass extends JFrame implements ActionListener {
 				switch (drawMode) {
 
 				case "PointMode":
-					editor.drawPoint(point);
+					editor.addPoint(point);
 					drawingpanel.requestToolObjectLists(editor);
-					drawingpanel
-					.repaint();
+					drawingpanel.repaint();
 					break;
 
 				case "LineMode":
@@ -1472,9 +1471,9 @@ public class MainClass extends JFrame implements ActionListener {
 			}
 
 		} else if ( eTarget.equals(csv)) {
-			openCsvInterface();
+			//openCsvInterface();
 		} else if ( eTarget.equals(db)) {
-			openDbInterface();
+			//openDbInterface();
 		}
 
 	}
